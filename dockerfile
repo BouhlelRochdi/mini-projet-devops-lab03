@@ -1,23 +1,12 @@
-# Utilisez une image Node.js comme base
-FROM node:18 as build
-
-# Définissez le répertoire de travail dans le conteneur
+FROM node:18-alpine AS build
 WORKDIR /app
-
-# Copiez le fichier package.json et package-lock.json (le cas échéant)
-COPY package*.json ./
-
-# Installez les dépendances du projet
+COPY package.json ./
 RUN npm install
-
-# Copiez le reste des fichiers de l'application
 COPY . .
+RUN apt update && apt install nano
+RUN npm install -g @angular/cli
+RUN npm run build
 
-# Construisez l'application Angular pour la production
-RUN npm run build --prod
 
-# Exposez le port 80 (ou le port que vous utilisez pour l'application Angular)
-EXPOSE 4200
-
-# Commande pour démarrer l'application lorsque le conteneur démarre
-CMD ["npm", "start"]
+FROM nginx:alpine
+COPY --from=build /app/dist/mini-projet-lab03 /usr/share/nginx/html
