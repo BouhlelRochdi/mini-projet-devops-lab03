@@ -3,10 +3,11 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . .
-RUN apt update && apt install nano
+RUN sudo apt update && apt install nano
 RUN npm install -g @angular/cli
+RUN npm run start
 RUN npm run build
 
 
-FROM nginx:alpine
-COPY --from=build /app/dist/mini-projet-lab03 /usr/share/nginx/html
+# FROM nginx:alpine
+# COPY --from=build /app/dist/mini-projet-lab03 /usr/share/nginx/html
