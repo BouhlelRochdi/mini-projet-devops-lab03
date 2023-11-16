@@ -68,8 +68,8 @@ jobs:
           password: dckr_pat_nQ15v5jnU09JdVw3IV6XmL4uOjU
 
 # check
-      - name: Check
-        run: actions/checkout@v2
+      # - name: Check
+      #   run: actions/checkout@v2
 
 # build and push
       - name: Build and push
