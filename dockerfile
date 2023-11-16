@@ -1,13 +1,13 @@
-FROM node:18-alpine AS build
+FROM node:18 as build
 WORKDIR /app
-COPY package.json ./
+COPY package*.json ./
 RUN npm install
 COPY . .
 # RUN apt update
 # RUN apt install nano
 RUN npm install -g @angular/cli
 RUN npm run start
-RUN npm run build
+# RUN npm run build
 
 
 # FROM nginx:alpine
