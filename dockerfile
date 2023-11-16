@@ -3,8 +3,8 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . .
-RUN sudo apt update
-RUN sudo apt install nano
+RUN apt update
+RUN apt install nano
 RUN npm install -g @angular/cli
 RUN npm run start
 RUN npm run build
