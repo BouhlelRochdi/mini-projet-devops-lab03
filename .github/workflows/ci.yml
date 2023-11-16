@@ -21,8 +21,8 @@ jobs:
       - name: Install Dependencies
         run: npm install -f
 
-      - name: Build Angular App
-        run: npm run build -- --prod
+      # - name: Build Angular App
+      #   run: npm run build -- --prod
 
   deploy:
     runs-on: ubuntu-latest
