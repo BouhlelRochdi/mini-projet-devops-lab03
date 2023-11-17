@@ -6,8 +6,9 @@ COPY . .
 # RUN apt update
 # RUN apt install nano
 RUN npm install -g @angular/cli
-RUN npm run start
-# RUN npm run build
+RUN npm install
+#RUN npm run start
+RUN npm run build
 
 
 # FROM nginx:alpine
